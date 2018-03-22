@@ -59,6 +59,12 @@ RUN curl -L https://www.getchef.com/chef/install.sh | bash \
     && rm -rf /var/cache/yum \
     && rm -rf /var/chef
 
+# Installing apt plugin
+
+COPY files/nexus-repository-apt-1.0.5.jar ${SONATYPE_DIR}/system/net/staticsnow/nexus-repository-apt/1.0.5/nexus-repository-apt-1.0.5.jar
+
+COPY files/nexus-config.xml ${SONATYPE_DIR}/system/org/sonatype/nexus/assemblies/nexus-core-feature/3.9.0-01/nexus-core-feature-3.9.0-01-features.xml
+
 VOLUME ${NEXUS_DATA}
 
 EXPOSE 8081
